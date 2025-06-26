@@ -420,24 +420,44 @@ h1, h2, h3, h4, h5, h6 {
 
 .book-cover {
     height: 350px;
-    background: linear-gradient(135deg, var(--blood-red), var(--accent-color));
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--text-color);
-    font-size: 4.5rem;
     position: relative;
     overflow: hidden;
+    background: var(--blood-red);
 }
 
-.book-cover::before {
-    content: '';
+.book-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: all 0.3s ease;
+}
+
+.book-overlay {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: all 0.3s ease;
+    color: var(--text-color);
+    font-size: 3rem;
+}
+
+.book-overlay i {
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.book-card:hover .book-overlay {
+    opacity: 1;
+}
+
+.book-card:hover .book-cover-img {
+    transform: scale(1.1);
 }
 
 .book-content {
