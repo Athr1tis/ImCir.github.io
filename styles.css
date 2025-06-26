@@ -332,6 +332,15 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 10px var(--accent-color);
 }
 
+.skill-card.low-code {
+    border: 2px dashed var(--accent-color);
+    background: rgba(255,0,0,0.03);
+}
+
+.skill-card.low-code .skill-icon {
+    color: var(--accent-color);
+}
+
 /* Projects Section */
 .project-card {
     background: var(--light-bg);
