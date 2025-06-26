@@ -402,87 +402,63 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Books Section */
-.book-card {
-    background: var(--light-bg);
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    transition: all 0.3s ease;
-    margin-bottom: 2rem;
-    border: 1px solid var(--blood-red);
-}
-
-.book-card:hover {
-    transform: translateY(-15px) rotateY(5deg);
-    box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
-    border-color: var(--accent-color);
-}
-
-.book-cover {
-    height: 350px;
-    position: relative;
-    overflow: hidden;
-    background: var(--blood-red);
-}
-
 .book-cover-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-/* Alternative fit options if cover doesn't work well */
-.book-cover-img.contain {
+    height: auto;
+    max-height: 400px;
     object-fit: contain;
+    object-position: center;
+    display: block;
     background: var(--blood-red);
+    margin: 0 auto;
+    box-shadow: none;
+    border-radius: 0;
 }
 
-.book-cover-img.fill {
-    object-fit: fill;
+.book-details-text, #books .col-md-8 {
+    padding: 0 0 0 2rem;
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
 }
 
-.book-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: all 0.3s ease;
-    color: var(--text-color);
-    font-size: 3rem;
+#books .row.align-items-start.mb-5 {
+    margin-bottom: 2.5rem;
 }
 
-.book-overlay i {
-    text-shadow: 0 0 10px var(--accent-color);
-}
-
-.book-card:hover .book-overlay {
-    opacity: 1;
-}
-
-.book-card:hover .book-cover-img {
-    transform: scale(1.1);
-}
-
-.book-content {
-    padding: 2rem;
-}
-
-.book-card h4 {
+#books h3 {
     color: var(--accent-color);
     text-shadow: 0 0 10px var(--accent-color);
+    margin-bottom: 1rem;
 }
 
-.book-card p {
-    color: var(--text-color);
+#books .badge {
+    font-size: 1rem;
+    padding: 0.5em 1em;
+}
+
+#books .text-muted {
+    color: #cccccc !important;
+}
+
+@media (max-width: 991px) {
+    .book-details-text, #books .col-md-8 {
+        padding: 1.5rem 0 0 0;
+    }
+}
+
+@media (max-width: 767px) {
+    #books .row.align-items-start.mb-5 {
+        flex-direction: column;
+        align-items: center;
+    }
+    .book-details-text, #books .col-md-8 {
+        padding: 1.5rem 0 0 0;
+        text-align: center;
+    }
+    .book-cover-img {
+        margin-bottom: 1.5rem;
+    }
 }
 
 /* Contact Section */
@@ -694,49 +670,4 @@ html {
 
 .section h1, .section h2, .section h3, .section h4, .section h5, .section h6 {
     color: var(--text-color);
-}
-
-.book-details-text {
-    padding: 1.5rem 2rem 1.5rem 0;
-    color: var(--text-color);
-}
-
-@media (max-width: 991px) {
-    .book-details-text {
-        padding: 1.5rem 0;
-    }
-}
-
-@media (max-width: 767px) {
-    #books .row.align-items-start.mb-5 {
-        flex-direction: column;
-        align-items: center;
-    }
-    .book-details-text {
-        padding: 1.5rem 0;
-        text-align: center;
-    }
-    .book-cover-img {
-        margin-bottom: 1.5rem;
-    }
-}
-
-#books .book-cover-img {
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    border-radius: 10px;
-    background: var(--blood-red);
-}
-
-#books h3, #books h4 {
-    color: var(--accent-color);
-    text-shadow: 0 0 10px var(--accent-color);
-}
-
-#books .badge {
-    font-size: 1rem;
-    padding: 0.5em 1em;
-}
-
-#books .text-muted {
-    color: #cccccc !important;
 } 
