@@ -370,8 +370,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .low-code-icon {
-    width: 30px !important;
-    height: 30px !important;
+    width: 45px !important;
+    height: 45px !important;
     object-fit: contain !important;
     object-position: center !important;
     display: inline-block;
