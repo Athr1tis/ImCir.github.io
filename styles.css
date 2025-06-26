@@ -338,52 +338,74 @@ h1, h2, h3, h4, h5, h6 {
     background: rgba(255,0,0,0.03);
     position: relative;
     overflow: visible;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .skill-card.low-code .skill-icon {
     color: var(--accent-color);
 }
 
-.skill-card.low-code .low-code-main-desc,
-.skill-card.low-code .low-code-list {
-    display: block;
-    opacity: 1;
-    max-height: none;
-    margin-top: 0;
-    transition: none;
+.skill-card.low-code .low-code-tool {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    text-align: center;
+    margin: 0 0.5rem;
 }
 
-.skill-card.low-code .low-code-inner-card {
-    display: none;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.skill-card.low-code:hover .low-code-inner-card {
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.low-code-tool {
+.low-code-tools-container {
     display: flex;
-    align-items: flex-start;
-    gap: 0.8rem;
-    margin-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    width: 100%;
+    flex-wrap: wrap;
+    max-width: 100%;
 }
 
-.low-code-tool:last-child {
+.skill-card.low-code .low-code-tool:last-child {
     margin-bottom: 0;
 }
 
-.low-code-icon {
-    width: 32px;
-    height: 32px;
-    flex-shrink: 0;
-    filter: drop-shadow(0 0 4px var(--accent-color));
+.skill-card.low-code .low-code-tool .low-code-icon {
+    width: 2px !important;
+    height: 2px !important;
+    min-width: 2px !important;
+    min-height: 2px !important;
+    max-width: 2px !important;
+    max-height: 2px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: block;
     background: #fff;
-    border-radius: 6px;
-    padding: 3px;
+    border-radius: 2px;
+    padding: 0 !important;
+}
+
+.skill-card.low-code .low-code-tool div {
+    opacity: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: opacity 0.3s ease, max-height 0.3s ease;
+    font-size: 0.8rem;
+    line-height: 1.2;
+    white-space: nowrap;
+    width: 100%;
+    text-align: center;
+}
+
+.skill-card.low-code .low-code-tool:hover div {
+    opacity: 1;
+    max-height: 100px;
+}
+
+.skill-card.low-code .low-code-tool:hover .low-code-icon {
+    transform: scale(1.1);
+    filter: drop-shadow(0 0 8px var(--accent-color));
 }
 
 /* Projects Section */
@@ -765,4 +787,14 @@ html {
     .skill-card .low-code-title {
         font-size: 1rem;
     }
+}
+
+.skill-card.low-code:hover .low-code-inner-card {
+    display: flex;
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+    justify-content: space-around;
+    align-items: center;
+    gap: 1rem;
 } 
