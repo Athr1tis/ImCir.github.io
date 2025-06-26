@@ -402,48 +402,49 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Books Section */
-.book-cover-img {
-    width: 100%;
-    height: auto;
+/* Remove all custom styles for books section layout */
+#books .book-cover-img,
+#books .book-details-text,
+#books .col-md-8 {
+    background: none !important;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+#books .col-md-4 {
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+#books img {
+    max-width: 100%;
     max-height: 400px;
     object-fit: contain;
     object-position: center;
     display: block;
-    background: var(--blood-red);
-    margin: 0 auto;
-    box-shadow: none;
-    border-radius: 0;
-}
-
-.book-details-text, #books .col-md-8 {
-    padding: 0 0 0 2rem;
     background: none;
     box-shadow: none;
     border-radius: 0;
+    margin: 0;
 }
 
-#books .row.align-items-start.mb-5 {
-    margin-bottom: 2.5rem;
-}
-
-#books h3 {
-    color: var(--accent-color);
-    text-shadow: 0 0 10px var(--accent-color);
-    margin-bottom: 1rem;
-}
-
-#books .badge {
-    font-size: 1rem;
-    padding: 0.5em 1em;
-}
-
-#books .text-muted {
-    color: #cccccc !important;
+#books .col-md-8 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 2rem !important;
 }
 
 @media (max-width: 991px) {
-    .book-details-text, #books .col-md-8 {
-        padding: 1.5rem 0 0 0;
+    #books .col-md-8 {
+        padding-left: 0 !important;
+        padding-top: 1.5rem !important;
     }
 }
 
@@ -452,11 +453,11 @@ h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
         align-items: center;
     }
-    .book-details-text, #books .col-md-8 {
-        padding: 1.5rem 0 0 0;
+    #books .col-md-8 {
+        padding: 1.5rem 0 0 0 !important;
         text-align: center;
     }
-    .book-cover-img {
+    #books img {
         margin-bottom: 1.5rem;
     }
 }
