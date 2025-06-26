@@ -444,8 +444,14 @@ h1, h2, h3, h4, h5, h6 {
     text-shadow: 0 0 10px var(--accent-color);
 }
 
-.project-card p {
-    color: var(--text-color);
+.project-card .project-content p {
+    display: none;
+    transition: opacity 0.3s;
+}
+
+.project-card:hover .project-content p {
+    display: block;
+    opacity: 1;
 }
 
 .project-image {
@@ -843,4 +849,20 @@ html {
     visibility: visible;
     opacity: 1;
     pointer-events: auto;
+}
+
+#projects .row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+#projects .col-lg-4.col-md-6 {
+    display: flex;
+    flex-direction: column;
+}
+#projects .project-card {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 } 
