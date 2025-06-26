@@ -429,7 +429,19 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: all 0.3s ease;
+    display: block;
+}
+
+/* Alternative fit options if cover doesn't work well */
+.book-cover-img.contain {
+    object-fit: contain;
+    background: var(--blood-red);
+}
+
+.book-cover-img.fill {
+    object-fit: fill;
 }
 
 .book-overlay {
