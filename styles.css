@@ -362,9 +362,22 @@ h1, h2, h3, h4, h5, h6 {
     align-items: center;
     gap: 0.5rem;
     margin-top: 1rem;
-    width: 100%;
-    flex-wrap: wrap;
-    max-width: 100%;
+    width: 20%;
+    max-width: 20%;
+    flex-wrap: nowrap;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.low-code-icon {
+    width: 30px !important;
+    height: 30px !important;
+    object-fit: contain !important;
+    object-position: center !important;
+    display: inline-block;
+    background: #fff;
+    border-radius: 3px;
+    padding: 0 !important;
 }
 
 .skill-card.low-code .low-code-tool:last-child {
@@ -380,9 +393,9 @@ h1, h2, h3, h4, h5, h6 {
     max-height: 2px !important;
     object-fit: contain !important;
     object-position: center !important;
-    display: block;
+    display: inline-block;
     background: #fff;
-    border-radius: 2px;
+    border-radius: 3px;
     padding: 0 !important;
 }
 
