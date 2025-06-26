@@ -360,13 +360,14 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 0.5rem;
+    gap: 1rem;
     margin-top: 1rem;
     width: 20%;
     max-width: 20%;
     flex-wrap: nowrap;
     margin-left: auto;
     margin-right: auto;
+    overflow: visible;
 }
 
 .low-code-icon {
@@ -810,4 +811,36 @@ html {
     justify-content: space-around;
     align-items: center;
     gap: 1rem;
+}
+
+.low-code-icon-wrapper {
+    position: relative;
+    display: inline-block;
+    z-index: 20;
+}
+
+.low-code-desc {
+    visibility: hidden;
+    opacity: 0;
+    position: absolute;
+    top: 110%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--accent-color);
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 8px;
+    white-space: nowrap;
+    font-size: 0.95rem;
+    z-index: 999;
+    pointer-events: none;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.15);
+    transition: opacity 0.2s, visibility 0.2s;
+    margin-top: 4px;
+}
+
+.low-code-icon-wrapper:hover .low-code-desc {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
 } 
