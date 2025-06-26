@@ -178,6 +178,7 @@ h1, h2, h3, h4, h5, h6 {
 .section {
     padding: 120px 0;
     position: relative;
+    color: var(--text-color);
 }
 
 .section::before {
@@ -200,6 +201,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 1rem;
     position: relative;
     text-shadow: 0 0 15px var(--accent-color);
+    color: var(--text-color);
 }
 
 .section-title h2::after {
@@ -251,6 +253,35 @@ h1, h2, h3, h4, h5, h6 {
 .profile-img:hover {
     transform: scale(1.05);
     box-shadow: 0 0 50px rgba(255, 0, 0, 0.8);
+}
+
+/* Update section backgrounds */
+#about {
+    background: var(--dark-bg) !important;
+}
+
+#projects {
+    background: var(--dark-bg) !important;
+}
+
+#contact {
+    background: var(--dark-bg) !important;
+}
+
+/* Update about text for better visibility */
+.about-text h3 {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.about-text p {
+    color: var(--text-color);
+    line-height: 1.8;
+}
+
+.about-text h4 {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
 }
 
 /* Skills Section */
@@ -316,6 +347,15 @@ h1, h2, h3, h4, h5, h6 {
     transform: translateY(-15px);
     box-shadow: 0 20px 40px rgba(255, 0, 0, 0.3);
     border-color: var(--accent-color);
+}
+
+.project-card h4 {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.project-card p {
+    color: var(--text-color);
 }
 
 .project-image {
@@ -402,6 +442,15 @@ h1, h2, h3, h4, h5, h6 {
 
 .book-content {
     padding: 2rem;
+}
+
+.book-card h4 {
+    color: var(--accent-color);
+    text-shadow: 0 0 10px var(--accent-color);
+}
+
+.book-card p {
+    color: var(--text-color);
 }
 
 /* Contact Section */
@@ -583,4 +632,34 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
     background: var(--secondary-color);
+}
+
+/* Update badges for better visibility */
+.badge.bg-primary {
+    background-color: var(--accent-color) !important;
+    color: var(--text-color);
+}
+
+.badge.bg-success {
+    background-color: var(--secondary-color) !important;
+    color: var(--text-color);
+}
+
+.badge.bg-warning {
+    background-color: var(--blood-red) !important;
+    color: var(--text-color);
+}
+
+/* Update text-muted for better visibility */
+.text-muted {
+    color: #cccccc !important;
+}
+
+/* Ensure all text in sections is visible */
+.section p {
+    color: var(--text-color);
+}
+
+.section h1, .section h2, .section h3, .section h4, .section h5, .section h6 {
+    color: var(--text-color);
 } 
