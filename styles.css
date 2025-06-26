@@ -335,10 +335,58 @@ h1, h2, h3, h4, h5, h6 {
 .skill-card.low-code {
     border: 2px dashed var(--accent-color);
     background: rgba(255,0,0,0.03);
+    position: relative;
+    overflow: visible;
 }
 
 .skill-card.low-code .skill-icon {
     color: var(--accent-color);
+}
+
+.low-code-inner-card {
+    display: none;
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    transform: translateX(-50%) translateY(20px);
+    min-width: 320px;
+    background: #1a0000;
+    border: 1.5px solid var(--accent-color);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+    padding: 1.2rem 1.5rem;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.skill-card.low-code:hover .low-code-inner-card {
+    display: block;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(0);
+}
+
+.low-code-tool {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.8rem;
+    margin-bottom: 1rem;
+}
+
+.low-code-tool:last-child {
+    margin-bottom: 0;
+}
+
+.low-code-icon {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 0 4px var(--accent-color));
+    background: #fff;
+    border-radius: 6px;
+    padding: 3px;
 }
 
 /* Projects Section */
@@ -680,4 +728,13 @@ html {
 
 .section h1, .section h2, .section h3, .section h4, .section h5, .section h6 {
     color: var(--text-color);
+}
+
+@media (max-width: 991px) {
+    .low-code-inner-card {
+        left: 0;
+        right: 0;
+        transform: none;
+        min-width: 220px;
+    }
 } 
