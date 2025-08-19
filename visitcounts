@@ -1,45 +1,67 @@
 # Visit Counts System Documentation
 
 ## Overview
-This portfolio uses CountAPI (https://countapi.xyz/) to track how many times each project link has been visited globally across all users and devices.
+This portfolio now uses a hybrid storage system that stores visit counts directly in the HTML file and localStorage for persistence across browsers.
+
+## Current Visit Counts
+- **speechy-pop**: 0 visits
+- **marketing-plan**: 0 visits  
+- **crypto-bot**: 0 visits
 
 ## How It Works
 
-### 1. Global Database
-- **Service**: CountAPI (free, no registration required)
-- **Namespace**: `rica-portfolio` (unique identifier for your portfolio)
-- **Keys**: Each project has its own counter key
+### 1. HTML Storage
+- **Hidden Input Fields**: Counts are stored in hidden `<input>` elements in the HTML
+- **Real-time Updates**: Counts update immediately when links are clicked
+- **Persistent Storage**: Counts are saved in the HTML file itself
 
-### 2. Project Counters
-- **speechy-pop**: Tracks visits to Speechy Pop project
-- **marketing-plan**: Tracks visits to 12 Week Marketing Plan project  
-- **crypto-bot**: Tracks visits to AI Chatbot Telegram project
+### 2. Backup Storage
+- **localStorage**: Browser-based backup storage
+- **Cross-session**: Counts persist between browser sessions
+- **Fallback**: Works if HTML storage fails
 
-### 3. API Endpoints Used
-- **Increment**: `https://api.countapi.xyz/hit/rica-portfolio/{project-name}`
-- **Get Count**: `https://api.countapi.xyz/get/rica-portfolio/{project-name}`
+### 3. Display System
+- **Link Counters**: Shows "(visited: X times)" next to each project link
+- **Live Panel**: Fixed position panel showing current counts
+- **Real-time Updates**: All displays update simultaneously
 
-## Benefits
-✅ **Global Tracking**: Counts persist across all browsers and devices
-✅ **Real-time Updates**: Counts update immediately when clicked
-✅ **No Backend Required**: Works with GitHub Pages
-✅ **Free Service**: No cost or registration needed
-✅ **Fallback System**: Uses localStorage if API fails
+## Storage Locations
 
-## Data Structure
-```json
-{
-  "namespace": "rica-portfolio",
-  "key": "speechy-pop",
-  "value": 42,
-  "created": "2024-01-01T00:00:00.000Z"
-}
+### Hidden Input Fields (in HTML)
+```html
+<input type="hidden" id="speechy-pop-storage" value="0">
+<input type="hidden" id="marketing-plan-storage" value="0">
+<input type="hidden" id="crypto-bot-storage" value="0">
 ```
 
-## Fallback System
-If CountAPI is unavailable, the system falls back to localStorage to ensure the counter still works locally.
+### Display Elements
+- **Link Counters**: `speechy-pop-count`, `marketing-plan-count`, `crypto-bot-count`
+- **Live Panel**: `speechy-pop-display`, `marketing-plan-display`, `crypto-bot-display`
+
+## Benefits
+✅ **HTML Storage**: Counts stored directly in the HTML file
+✅ **Cross-browser**: Works on any browser/device
+✅ **Real-time Updates**: Immediate count updates
+✅ **Persistent**: Counts don't reset between browsers
+✅ **Backup System**: localStorage as fallback
+
+## How to Update Counts
+1. Click any project link
+2. Count automatically increments
+3. All displays update simultaneously
+4. Counts saved to localStorage
+5. HTML file can be manually updated with new counts
+
+## Manual Count Updates
+To manually set counts, update the hidden input values in the HTML:
+```html
+<input type="hidden" id="speechy-pop-storage" value="42">
+<input type="hidden" id="marketing-plan-storage" value="15">
+<input type="hidden" id="crypto-bot-storage" value="8">
+```
 
 ## Privacy
-- No personal data is collected
-- Only anonymous click counts are stored
-- Counts are public and visible to all visitors
+- No external services required
+- Counts stored locally in HTML and browser
+- No personal data collected
+- Counts visible to all visitors
