@@ -688,19 +688,26 @@ html, body {
   letter-spacing: 0.3px;
 }
 
-/* Click Tracking Styles */
-.tracked-link {
+/* Project Links and Click Counter */
+.project-link {
   color: #61dafb;
   text-decoration: none;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
   gap: 8px;
+  padding: 4px 8px;
+  border-radius: 6px;
+  background: rgba(97, 218, 251, 0.1);
+  border: 1px solid transparent;
 }
 
-.tracked-link:hover {
+.project-link:hover {
   color: #4fa8d1;
-  text-decoration: underline;
+  background: rgba(97, 218, 251, 0.15);
+  border-color: rgba(97, 218, 251, 0.3);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(97, 218, 251, 0.2);
 }
 
 .click-count {
@@ -708,6 +715,7 @@ html, body {
   font-size: 0.85em;
   font-style: italic;
   font-weight: 400;
+  margin-left: 4px;
 }
 
 .click-count span {
