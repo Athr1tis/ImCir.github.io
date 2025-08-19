@@ -184,19 +184,19 @@
         <p>⭐ Speechy Pop</p> 
   <p>
     🔗 <a href="javascript:void(0)" onclick="trackLinkClick('speechy-pop', 'https://drive.google.com/drive/folders/1D3xJdQ96QsQiiH36wZdvF9e5QC5BzyYF?usp=sharing')" class="tracked-link">
-      Google Drive Link <span class="click-count">(<span id="speechy-pop-count">0</span> clicks)</span>
+      Google Drive Link <span class="click-count">(visited: <span id="speechy-pop-count">0</span> times)</span>
     </a>
   </p>
   <p>⭐ 12 Week Marketing Plan</p> 
   <p>
     🔗 <a href="javascript:void(0)" onclick="trackLinkClick('marketing-plan', 'https://drive.google.com/drive/folders/1_Xi03-SVyBrXI_ZLQHQ7ENy9NNZ9vF9o?usp=sharing')" class="tracked-link">
-      Google Drive Link <span class="click-count">(<span id="marketing-plan-count">0</span> clicks)</span>
+      Google Drive Link <span class="click-count">(visited: <span id="marketing-plan-count">0</span> times)</span>
     </a>
   </p>
   <p>⭐  AI Chatbot Telegram For Crypto</p> 
   <p>
     🔗 <a href="javascript:void(0)" onclick="trackLinkClick('crypto-bot', 'https://drive.google.com/drive/folders/17aIS1kBgWiPfT5ql34lAb-5UthHriCeh?usp=drive_link')" class="tracked-link">
-      Google Drive Link <span class="click-count">(<span id="crypto-bot-count">0</span> clicks)</span>
+      Google Drive Link <span class="click-count">(visited: <span id="crypto-bot-count">0</span> times)</span>
     </a>
   </p>
         </div>
@@ -261,23 +261,47 @@
 
 
   <script>
-    // Click tracking functionality
-    function trackLinkClick(linkId, linkUrl) {
-      // Get current count from localStorage
-      let clickCount = localStorage.getItem(linkId) || 0;
-      clickCount = parseInt(clickCount) + 1;
-      
-      // Save updated count
-      localStorage.setItem(linkId, clickCount);
-      
-      // Update the display
-      updateClickCount(linkId, clickCount);
-      
-      // Open the link
-      window.open(linkUrl, '_blank');
-      
-      // Optional: Send to analytics service
-      console.log(`Link clicked: ${linkId}, Total clicks: ${clickCount}`);
+    // Firebase configuration - Replace with your own config
+    const firebaseConfig = {
+      apiKey: "AIzaSyAsFWorYNG28_RCONsQJfe4U3Qf4Vt55Wg",
+      authDomain: "counting-f42b8.firebaseapp.com",
+      projectId: "counting-f42b8",
+      storageBucket: "counting-f42b8.firebasestorage.app",
+      messagingSenderId: "G-CW5QTCPX2Z",
+      appId: "1:830587333188:web:aab3417d9427b3dcb26a11"
+    };
+    
+    // Initialize Firebase (uncomment when you have your config)
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    
+    // Click tracking functionality with Firebase
+    async function trackLinkClick(linkId, linkUrl) {
+      try {
+        // For now, use localStorage as fallback
+        let clickCount = localStorage.getItem(linkId) || 0;
+        clickCount = parseInt(clickCount) + 1;
+        localStorage.setItem(linkId, clickCount);
+        
+        // Update the display
+        updateClickCount(linkId, clickCount);
+        
+        // TODO: When Firebase is set up, uncomment this:
+        // const linkRef = db.collection('linkClicks').doc(linkId);
+        // await linkRef.set({
+        //   clicks: firebase.firestore.FieldValue.increment(1),
+        //   lastClicked: new Date()
+        // }, { merge: true });
+        
+        // Open the link
+        window.open(linkUrl, '_blank');
+        
+        console.log(`Link clicked: ${linkId}, Total clicks: ${clickCount}`);
+      } catch (error) {
+        console.error('Error tracking click:', error);
+        // Fallback: just open the link
+        window.open(linkUrl, '_blank');
+      }
     }
     
     function updateClickCount(linkId, count) {
@@ -287,18 +311,31 @@
       }
     }
     
-    function initializeClickCounts() {
-      // Initialize all click counts on page load
-      const links = [
-        { id: 'speechy-pop', url: 'https://drive.google.com/drive/folders/1D3xJdQ96QsQiiH36wZdvF9e5QC5BzyYF?usp=sharing' },
-        { id: 'marketing-plan', url: 'https://drive.google.com/drive/folders/1_Xi03-SVyBrXI_ZLQHQ7ENy9NNZ9vF9o?usp=sharing' },
-        { id: 'crypto-bot', url: 'https://drive.google.com/drive/folders/17aIS1kBgWiPfT5ql34lAb-5UthHriCeh?usp=drive_link' }
-      ];
-      
-      links.forEach(link => {
-        const count = localStorage.getItem(link.id) || 0;
-        updateClickCount(link.id, count);
-      });
+    // Function to load click counts from Firebase (when ready)
+    async function loadClickCounts() {
+      try {
+        // For now, load from localStorage
+        const links = [
+          { id: 'speechy-pop', url: 'https://drive.google.com/drive/folders/1D3xJdQ96QsQiiH36wZdvF9e5QC5BzyYF?usp=sharing' },
+          { id: 'marketing-plan', url: 'https://drive.google.com/drive/folders/1_Xi03-SVyBrXI_ZLQHQ7ENy9NNZ9vF9o?usp=sharing' },
+          { id: 'crypto-bot', url: 'https://drive.google.com/drive/folders/17aIS1kBgWiPfT5ql34lAb-5UthHriCeh?usp=drive_link' }
+        ];
+        
+        links.forEach(link => {
+          const count = localStorage.getItem(link.id) || 0;
+          updateClickCount(link.id, count);
+        });
+        
+        // TODO: When Firebase is set up, uncomment this:
+        // const snapshot = await db.collection('linkClicks').get();
+        // snapshot.forEach(doc => {
+        //   const data = doc.data();
+        //   updateClickCount(doc.id, data.clicks || 0);
+        // });
+        
+      } catch (error) {
+        console.error('Error loading click counts:', error);
+      }
     }
     
     function openAvatarModal() {
@@ -318,7 +355,9 @@
     }
     
     // Initialize click counts when page loads
-    window.addEventListener('load', initializeClickCounts);
+    window.addEventListener('load', loadClickCounts);
   </script>
 </body>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
 </html>
