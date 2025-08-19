@@ -332,36 +332,83 @@
 
     // Load counts from HTML hidden fields when page loads
     function loadCountsFromStorage() {
-      // First load from HTML hidden fields (these are the source of truth)
+      // Always start with HTML values as the base (these are the source of truth)
       loadCountsFromHTML();
       
-      // Then check localStorage for any additional clicks since page load
-      const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
-      projects.forEach(project => {
-        const storedCount = localStorage.getItem(project);
-        if (storedCount !== null) {
-          const localCount = parseInt(storedCount);
-          const htmlCount = parseInt(document.getElementById(`${project}-storage`).value) || 0;
-          
-          // Use the higher count (HTML or localStorage)
-          visitCounts[project] = Math.max(localCount, htmlCount);
-          
-          // Update displays
-          const countElement = document.getElementById(`${project}-count`);
-          const displayElement = document.getElementById(`${project}-display`);
-          
-          if (countElement) {
-            countElement.textContent = visitCounts[project];
+      // Check if this is a new session by looking for a session marker
+      const sessionId = 'session_' + Date.now();
+      const currentSession = localStorage.getItem('currentSession');
+      
+      if (!currentSession) {
+        // This is a new session, clear any old localStorage data
+        localStorage.clear();
+        localStorage.setItem('currentSession', sessionId);
+        console.log('New session started, using HTML values as base');
+      } else {
+        // This is an existing session, check for additional clicks
+        const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
+        projects.forEach(project => {
+          const storedCount = localStorage.getItem(project);
+          if (storedCount !== null) {
+            const localCount = parseInt(storedCount);
+            const htmlCount = parseInt(document.getElementById(`${project}-storage`).value) || 0;
+            
+            // Only use localStorage if it's higher than HTML (meaning clicks happened this session)
+            if (localCount > htmlCount) {
+              visitCounts[project] = localCount;
+              
+              // Update displays
+              const countElement = document.getElementById(`${project}-count`);
+              const displayElement = document.getElementById(`${project}-display`);
+              
+              if (countElement) {
+                countElement.textContent = visitCounts[project];
+              }
+              if (displayElement) {
+                displayElement.textContent = visitCounts[project];
+              }
+            }
           }
-          if (displayElement) {
-            displayElement.textContent = visitCounts[project];
-          }
-        }
-      });
+        });
+      }
     }
 
     // Initialize counts when page loads
     window.addEventListener('load', loadCountsFromStorage);
+
+    // Function to reset counts to HTML values (useful for testing)
+    function resetToHTMLCounts() {
+      localStorage.clear();
+      loadCountsFromHTML();
+      console.log('Counts reset to HTML values');
+    }
+
+    // Function to manually set counts (for admin use)
+    function setCount(projectName, newCount) {
+      visitCounts[projectName] = newCount;
+      
+      // Update HTML storage
+      const storageElement = document.getElementById(`${projectName}-storage`);
+      if (storageElement) {
+        storageElement.value = newCount;
+      }
+      
+      // Update displays
+      const countElement = document.getElementById(`${projectName}-count`);
+      const displayElement = document.getElementById(`${projectName}-display`);
+      
+      if (countElement) {
+        countElement.textContent = newCount;
+      }
+      if (displayElement) {
+        displayElement.textContent = newCount;
+      }
+      
+      // Update localStorage
+      localStorage.setItem(projectName, newCount);
+      
+      console.log(`${projectName} count set to ${newCount}`);
+    }
   </script>
 
   <!-- Hidden storage for visit counts -->
