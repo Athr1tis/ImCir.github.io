@@ -327,7 +327,26 @@
       // Store in localStorage as backup
       localStorage.setItem(projectName, visitCounts[projectName]);
       
+      // Update the visitcounts display to show the "database" is updated
+      updateVisitCountsDisplay();
+      
       console.log(`${projectName} clicked! New count: ${visitCounts[projectName]}`);
+    }
+
+    // Update the visitcounts display to show current "database" state
+    function updateVisitCountsDisplay() {
+      const visitCountsDisplay = document.getElementById('visitcounts-display');
+      if (visitCountsDisplay) {
+        visitCountsDisplay.innerHTML = `
+          <div style="color: #61dafb; font-weight: bold; margin-bottom: 8px;">📊 visitcounts Database</div>
+          <div>speechy-pop: ${visitCounts['speechy-pop']} visits</div>
+          <div>marketing-plan: ${visitCounts['marketing-plan']} visits</div>
+          <div>crypto-bot: ${visitCounts['crypto-bot']} visits</div>
+          <div style="margin-top: 8px; font-size: 10px; color: #888;">
+            💡 This shows the current state of your visitcounts file
+          </div>
+        `;
+      }
     }
 
     // Load counts from HTML hidden fields when page loads
@@ -371,6 +390,9 @@
           }
         });
       }
+      
+      // Update the visitcounts display
+      updateVisitCountsDisplay();
     }
 
     // Initialize counts when page loads
@@ -380,6 +402,7 @@
     function resetToHTMLCounts() {
       localStorage.clear();
       loadCountsFromHTML();
+      updateVisitCountsDisplay();
       console.log('Counts reset to HTML values');
     }
 
@@ -407,7 +430,49 @@
       // Update localStorage
       localStorage.setItem(projectName, newCount);
       
+      // Update the visitcounts display
+      updateVisitCountsDisplay();
+      
       console.log(`${projectName} count set to ${newCount}`);
+    }
+
+    // Function to show current visitcounts file content
+    function showVisitCountsFile() {
+      const content = `# Visit Counts System Documentation
+
+## Current Visit Counts
+- **speechy-pop**: ${visitCounts['speechy-pop']} visits
+- **marketing-plan**: ${visitCounts['marketing-plan']} visits  
+- **crypto-bot**: ${visitCounts['crypto-bot']} visits
+
+## Last Updated
+${new Date().toLocaleString()}
+
+## How to Update visitcounts File
+1. Copy the counts above
+2. Update your visitcounts file
+3. Commit and push to GitHub
+4. Counts will be synchronized across all devices
+
+## Current Session Clicks
+- Speechy Pop: ${visitCounts['speechy-pop']} total
+- Marketing Plan: ${visitCounts['marketing-plan']} total  
+- Crypto Bot: ${visitCounts['crypto-bot']} total`;
+
+      // Create a popup with the content
+      const popup = window.open('', '_blank', 'width=600,height=400');
+      popup.document.write(`
+        <html>
+          <head><title>visitcounts File Content</title></head>
+          <body style="font-family: monospace; padding: 20px; background: #1e1e1e; color: #fff;">
+            <h2>📄 visitcounts File Content</h2>
+            <p>Copy this content and update your visitcounts file:</p>
+            <textarea style="width: 100%; height: 300px; background: #2d2d2d; color: #fff; border: 1px solid #555; padding: 10px; font-family: monospace;" readonly>${content}</textarea>
+            <br><br>
+            <button onclick="window.close()" style="padding: 10px 20px; background: #61dafb; color: #000; border: none; border-radius: 5px; cursor: pointer;">Close</button>
+          </body>
+        </html>
+      `);
     }
   </script>
 
@@ -417,11 +482,16 @@
   <input type="hidden" id="crypto-bot-storage" value="34">
 
   <!-- Current Visit Counts Display -->
-  <div style="position: fixed; bottom: 20px; right: 20px; background: rgba(35, 39, 47, 0.9); padding: 15px; border-radius: 10px; border: 1px solid #61dafb; font-size: 12px; color: #e4e4e7; z-index: 1000; max-width: 200px;">
+  <div id="visitcounts-display" style="position: fixed; bottom: 20px; right: 20px; background: rgba(35, 39, 47, 0.9); padding: 15px; border-radius: 10px; border: 1px solid #61dafb; font-size: 12px; color: #e4e4e7; z-index: 1000; max-width: 200px;">
     <div style="color: #61dafb; font-weight: bold; margin-bottom: 8px;">📊 Current Visit Counts</div>
     <div>Speechy Pop: <span id="speechy-pop-display">0</span></div>
     <div>Marketing Plan: <span id="marketing-plan-display">0</span></div>
     <div>Crypto Bot: <span id="crypto-bot-display">0</span></div>
+    <div style="margin-top: 10px; text-align: center;">
+      <button onclick="showVisitCountsFile()" style="background: #61dafb; color: #000; border: none; padding: 5px 10px; border-radius: 5px; font-size: 10px; cursor: pointer; width: 100%;">
+        📄 View visitcounts File
+      </button>
+    </div>
   </div>
 </body>
 </html>
