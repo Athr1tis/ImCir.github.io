@@ -301,9 +301,22 @@
 
     function openAvatarModal() {
       document.getElementById('avatar-modal').style.display = 'flex';
+      
+      // Hide the dynamic database panel on mobile
+      const visitCountsDisplay = document.getElementById('visitcounts-display');
+      if (visitCountsDisplay) {
+        visitCountsDisplay.style.display = 'none';
+      }
     }
+    
     function closeAvatarModal() {
       document.getElementById('avatar-modal').style.display = 'none';
+      
+      // Show the dynamic database panel again on mobile
+      const visitCountsDisplay = document.getElementById('visitcounts-display');
+      if (visitCountsDisplay) {
+        visitCountsDisplay.style.display = 'block';
+      }
     }
     // Optional: Close modal when clicking outside content
     window.onclick = function(event) {
@@ -416,6 +429,9 @@
     function updateVisitCountsDisplay() {
       const visitCountsDisplay = document.getElementById('visitcounts-display');
       if (visitCountsDisplay) {
+        // Store current display state to preserve it
+        const currentDisplay = visitCountsDisplay.style.display;
+        
         visitCountsDisplay.innerHTML = `
           <div style="color: #61dafb; font-weight: bold; margin-bottom: 8px;">📊 Dynamic Database(Updated every 1hr)</div>
           <div>speechy-pop: ${visitCounts['speechy-pop']} visits</div>
@@ -425,6 +441,9 @@
             🚀 Updates sync automatically via GitHub Actions
           </div>
         `;
+        
+        // Restore the display state
+        visitCountsDisplay.style.display = currentDisplay;
       }
     }
 
