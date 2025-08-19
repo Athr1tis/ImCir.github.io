@@ -195,8 +195,44 @@
   </p>
   <p>⭐  AI Chatbot Telegram For Crypto</p> 
   <p>
-    🔗 <a href="https://drive.google.com/drive/folders/17aIS1kBgWiPfT5ql34lAb-5UthHriCeh?usp=drive_link" onclick="trackClick('crypto-bot')" class="project-link">
+    🔗 <a href="https://drive.google.com/drive/folders/17aIS1kBgWiPfT5ql34lAb-5UthHriCeh?usp=sharing" onclick="trackClick('crypto-bot')" class="project-link">
       Google Drive Link <span class="click-count">(visited: <span id="crypto-bot-count">0</span> times)</span>
+    </a>
+  </p>
+</p> <p>⭐  Athlonix Band</p> 
+<p>
+  🔗 <a href="https://drive.google.com/drive/folders/1UQeKHPQTe7NwtCEtkpeviCUdK3_6xvpy?usp=sharing" onclick="trackClick('athlonix')" class="project-link">
+    Google Drive Link <span class="click-count">(visited: <span id="athlonix-count">0</span> times)</span>
+  </a>
+</p>
+  <p>⭐  Project AnalogHorror</p> 
+  <p>
+    🔗 <a href="https://drive.google.com/drive/folders/15iARcqaiLqWs5ii-_ak8ICdAAHz17xq1?usp=sharing" onclick="trackClick('analoghorror')" class="project-link">
+      Google Drive Link <span class="click-count">(visited: <span id="analoghorror-count">0</span> times)</span>
+    </a>
+  </p> 
+  <p>⭐  n8n Projects</p> 
+  <p>
+    🔗 <a href="https://drive.google.com/drive/folders/1PZwnjFB1f7SrmrB7wEC0X6YhjwbfF3LO?usp=sharing" onclick="trackClick('n8n')" class="project-link">
+      Google Drive Link <span class="click-count">(visited: <span id="n8n-count">0</span> times)</span>
+    </a>
+  </p>
+  <p>⭐  Make Projects</p> 
+  <p>
+    🔗 <a href="https://drive.google.com/drive/folders/1z3hEATR8HHuZy9CQ61NvszkWqKPMHmKc?usp=sharing" onclick="trackClick('make')" class="project-link">
+      Google Drive Link <span class="click-count">(visited: <span id="make-count">0</span> times)</span>
+    </a>
+  </p>
+  <p>⭐  Graphics Editor Projects</p> 
+  <p>
+    🔗 <a href="https://drive.google.com/drive/folders/10-kLxMP7gytVZr5VWbejV5_D6mxDpCH0?usp=sharing" onclick="trackClick('graphics')" class="project-link">
+      Google Drive Link <span class="click-count">(visited: <span id="graphics-count">0</span> times)</span>
+    </a>
+  </p>
+  <p>⭐  GHL Projects</p> 
+  <p>
+    🔗 <a href="https://drive.google.com/drive/folders/1NckWYObta26M5HtVPNSbj51mfLbdW9zd?usp=sharing" onclick="trackClick('ghl')" class="project-link">
+      Google Drive Link <span class="click-count">(visited: <span id="ghl-count">0</span> times)</span>
     </a>
   </p>
         </div>
@@ -265,7 +301,13 @@
     let visitCounts = {
       'speechy-pop': 0,
       'marketing-plan': 0,
-      'crypto-bot': 0
+      'crypto-bot': 0,
+      'athlonix': 0,
+      'analoghorror': 0,
+      'n8n': 0,
+      'make': 0,
+      'graphics': 0,
+      'ghl': 0
     };
 
     // GitHub API configuration for dynamic updates
@@ -278,7 +320,7 @@
 
     // Load counts from HTML hidden fields when page loads
     function loadCountsFromHTML() {
-      const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
+      const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot', 'athlonix', 'analoghorror', 'n8n', 'make', 'graphics', 'ghl'];
       projects.forEach(project => {
         // Get the initial count from the HTML hidden field
         const storageElement = document.getElementById(`${project}-storage`);
@@ -437,6 +479,12 @@
           <div>speechy-pop: ${visitCounts['speechy-pop']} visits</div>
           <div>marketing-plan: ${visitCounts['marketing-plan']} visits</div>
           <div>crypto-bot: ${visitCounts['crypto-bot']} visits</div>
+          <div>athlonix: ${visitCounts['athlonix']} visits</div>
+          <div>analoghorror: ${visitCounts['analoghorror']} visits</div>
+          <div>n8n: ${visitCounts['n8n']} visits</div>
+          <div>make: ${visitCounts['make']} visits</div>
+          <div>graphics: ${visitCounts['graphics']} visits</div>
+          <div>ghl: ${visitCounts['ghl']} visits</div>
           <div style="margin-top: 8px; font-size: 10px; color: #888;">
             🚀 Updates sync automatically via GitHub Actions
           </div>
@@ -463,7 +511,7 @@
         console.log('New session started, using HTML values as base');
       } else {
         // This is an existing session, check for additional clicks
-        const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
+        const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot', 'athlonix', 'analoghorror', 'n8n', 'make', 'graphics', 'ghl'];
         projects.forEach(project => {
           const storedCount = localStorage.getItem(project);
           if (storedCount !== null) {
@@ -542,6 +590,12 @@
 - **speechy-pop**: ${visitCounts['speechy-pop']} visits
 - **marketing-plan**: ${visitCounts['marketing-plan']} visits  
 - **crypto-bot**: ${visitCounts['crypto-bot']} visits
+- **athlonix**: ${visitCounts['athlonix']} visits
+- **analoghorror**: ${visitCounts['analoghorror']} visits
+- **n8n**: ${visitCounts['n8n']} visits
+- **make**: ${visitCounts['make']} visits
+- **graphics**: ${visitCounts['graphics']} visits
+- **ghl**: ${visitCounts['ghl']} visits
 
 ## Last Updated
 ${new Date().toLocaleString()}
@@ -556,6 +610,12 @@ ${new Date().toLocaleString()}
 - Speechy Pop: ${visitCounts['speechy-pop']} total
 - Marketing Plan: ${visitCounts['marketing-plan']} total  
 - Crypto Bot: ${visitCounts['crypto-bot']} total
+- Athlonix: ${visitCounts['athlonix']} total
+- AnalogHorror: ${visitCounts['analoghorror']} total
+- n8n: ${visitCounts['n8n']} total
+- Make: ${visitCounts['make']} total
+- Graphics: ${visitCounts['graphics']} total
+- GHL: ${visitCounts['ghl']} total
 
 ## How It Works
 1. Click any project link
@@ -601,6 +661,12 @@ ${new Date().toLocaleString()}
   <input type="hidden" id="speechy-pop-storage" value="9">
   <input type="hidden" id="marketing-plan-storage" value="4">
   <input type="hidden" id="crypto-bot-storage" value="34">
+  <input type="hidden" id="athlonix-storage" value="0">
+  <input type="hidden" id="analoghorror-storage" value="0">
+  <input type="hidden" id="n8n-storage" value="0">
+  <input type="hidden" id="make-storage" value="0">
+  <input type="hidden" id="graphics-storage" value="0">
+  <input type="hidden" id="ghl-storage" value="0">
 
   <!-- Current Visit Counts Display -->
   <div id="visitcounts-display" style="position: fixed; bottom: 20px; right: 20px; background: rgba(35, 39, 47, 0.9); padding: 15px; border-radius: 10px; border: 1px solid #61dafb; font-size: 12px; color: #e4e4e7; z-index: 1000; max-width: 200px;">

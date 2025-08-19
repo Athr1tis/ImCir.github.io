@@ -20,7 +20,13 @@ const HTML_FILE = path.join(process.cwd(), 'index.html');
 const DEFAULT_COUNTS = {
   'speechy-pop': 9,
   'marketing-plan': 4,
-  'crypto-bot': 34
+  'crypto-bot': 34,
+  'athlonix': 0,
+  'analoghorror': 0,
+  'n8n': 0,
+  'make': 0,
+  'graphics': 0,
+  'ghl': 0
 };
 
 // Parse command line arguments
@@ -70,7 +76,7 @@ function showCurrentCounts() {
   
   try {
     const content = fs.readFileSync(VISITCOUNTS_FILE, 'utf8');
-    const countRegex = /- \*\*(speechy-pop|marketing-plan|crypto-bot)\*\*: (\d+) visits/g;
+    const countRegex = /- \*\*(speechy-pop|marketing-plan|crypto-bot|athlonix|analoghorror|n8n|make|graphics|ghl)\*\*: (\d+) visits/g;
     let match;
     
     while ((match = countRegex.exec(content)) !== null) {
@@ -132,7 +138,7 @@ function readCurrentCounts() {
   
   try {
     const content = fs.readFileSync(VISITCOUNTS_FILE, 'utf8');
-    const countRegex = /- \*\*(speechy-pop|marketing-plan|crypto-bot)\*\*: (\d+) visits/g;
+    const countRegex = /- \*\*(speechy-pop|marketing-plan|crypto-bot|athlonix|analoghorror|n8n|make|graphics|ghl)\*\*: (\d+) visits/g;
     let match;
     
     while ((match = countRegex.exec(content)) !== null) {
@@ -214,6 +220,30 @@ function updateHTMLCounts(counts) {
       /id="crypto-bot-storage" value="\d+"/,
       `id="crypto-bot-storage" value="${counts['crypto-bot']}"`
     );
+    htmlContent = htmlContent.replace(
+      /id="athlonix-storage" value="\d+"/,
+      `id="athlonix-storage" value="${counts['athlonix']}"`
+    );
+    htmlContent = htmlContent.replace(
+      /id="analoghorror-storage" value="\d+"/,
+      `id="analoghorror-storage" value="${counts['analoghorror']}"`
+    );
+    htmlContent = htmlContent.replace(
+      /id="n8n-storage" value="\d+"/,
+      `id="n8n-storage" value="${counts['n8n']}"`
+    );
+    htmlContent = htmlContent.replace(
+      /id="make-storage" value="\d+"/,
+      `id="make-storage" value="${counts['make']}"`
+    );
+    htmlContent = htmlContent.replace(
+      /id="graphics-storage" value="\d+"/,
+      `id="graphics-storage" value="${counts['graphics']}"`
+    );
+    htmlContent = htmlContent.replace(
+      /id="ghl-storage" value="\d+"/,
+      `id="ghl-storage" value="${counts['ghl']}"`
+    );
     
     fs.writeFileSync(HTML_FILE, htmlContent);
     console.log('📄 HTML file updated with new counts');
@@ -249,6 +279,12 @@ Valid Projects:
   - speechy-pop
   - marketing-plan
   - crypto-bot
+  - athlonix
+  - analoghorror
+  - n8n
+  - make
+  - graphics
+  - ghl
 `);
 }
 

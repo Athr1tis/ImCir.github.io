@@ -58,7 +58,7 @@ jobs:
         }
         
         // Parse current counts
-        const countRegex = /- \*\*(speechy-pop|marketing-plan|crypto-bot)\*\*: (\d+) visits/g;
+        const countRegex = /- \*\*(speechy-pop|marketing-plan|crypto-bot|athlonix|analoghorror|n8n|make|graphics|ghl)\*\*: (\d+) visits/g;
         const counts = {};
         let match;
         
@@ -70,6 +70,12 @@ jobs:
         if (!counts['speechy-pop']) counts['speechy-pop'] = 9;
         if (!counts['marketing-plan']) counts['marketing-plan'] = 4;
         if (!counts['crypto-bot']) counts['crypto-bot'] = 34;
+        if (!counts['athlonix']) counts['athlonix'] = 0;
+        if (!counts['analoghorror']) counts['analoghorror'] = 0;
+        if (!counts['n8n']) counts['n8n'] = 0;
+        if (!counts['make']) counts['make'] = 0;
+        if (!counts['graphics']) counts['graphics'] = 0;
+        if (!counts['ghl']) counts['ghl'] = 0;
         
         // Update counts based on workflow inputs
         const project = '${{ github.event.inputs.project }}';
@@ -146,6 +152,30 @@ To manually update counts, go to Actions > Update Visit Counts > Run workflow
           /id=\"crypto-bot-storage\" value=\"\d+\"/,
           \`id=\"crypto-bot-storage\" value=\"\${counts['crypto-bot']}\"\`
         );
+        htmlContent = htmlContent.replace(
+          /id=\"athlonix-storage\" value=\"\d+\"/,
+          \`id=\"athlonix-storage\" value=\"\${counts['athlonix']}\"\`
+        );
+        htmlContent = htmlContent.replace(
+          /id=\"analoghorror-storage\" value=\"\d+\"/,
+          \`id=\"analoghorror-storage\" value=\"\${counts['analoghorror']}\"\`
+        );
+        htmlContent = htmlContent.replace(
+          /id=\"n8n-storage\" value=\"\d+\"/,
+          \`id=\"n8n-storage\" value=\"\${counts['n8n']}\"\`
+        );
+        htmlContent = htmlContent.replace(
+          /id=\"make-storage\" value=\"\d+\"/,
+          \`id=\"make-storage\" value=\"\${counts['make']}\"\`
+        );
+        htmlContent = htmlContent.replace(
+          /id=\"graphics-storage\" value=\"\d+\"/,
+          \`id=\"graphics-storage\" value=\"\${counts['graphics']}\"\`
+        );
+        htmlContent = htmlContent.replace(
+          /id=\"ghl-storage\" value=\"\d+\"/,
+          \`id=\"ghl-storage\" value=\"\${counts['ghl']}\"\`
+        );
         
         fs.writeFileSync(htmlPath, htmlContent);
         console.log('HTML file updated with new counts');
@@ -164,3 +194,9 @@ To manually update counts, go to Actions > Update Visit Counts > Run workflow
         echo "- speechy-pop: $(grep -o 'speechy-pop.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
         echo "- marketing-plan: $(grep -o 'marketing-plan.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
         echo "- crypto-bot: $(grep -o 'crypto-bot.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
+        echo "- athlonix: $(grep -o 'athlonix.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
+        echo "- analoghorror: $(grep -o 'analoghorror.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
+        echo "- n8n: $(grep -o 'n8n.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
+        echo "- make: $(grep -o 'make.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
+        echo "- graphics: $(grep -o 'graphics.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
+        echo "- ghl: $(grep -o 'ghl.*: [0-9]*' visitcounts | grep -o '[0-9]*$') visits"
