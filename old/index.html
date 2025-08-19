@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cir - Programmer & Author Portfolio</title>
+    <link rel="icon" href="pfp.jpg" type="image/jpeg">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div class="loading" id="loading">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">Cir</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#books">Books</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8 mx-auto text-center">
+                    <div class="hero-content">
+                        <h1>Hi, I'm Cir</h1>
+                        <p>Passionate Programmer & Published Author</p>
+                        <p>Creating innovative solutions through code and compelling stories through words</p>
+                        <div class="hero-buttons">
+                            <a href="#projects" class="btn btn-custom btn-primary-custom">View My Work</a>
+                            <a href="#books" class="btn btn-custom btn-outline-custom">Read My Books</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>About Me</h2>
+                <p>Dedicated to the art of programming and storytelling</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="about-text fade-in">
+                        <h3>Programmer & Author</h3>
+                        <p>I'm a passionate developer with expertise in modern web technologies and a published author who loves to tell compelling stories. My journey spans from writing clean, efficient code to crafting engaging narratives that resonate with readers.</p>
+                        <p>With years of experience in software development, I specialize in creating user-friendly applications and robust backend systems. As an author, I've published several books that explore themes of technology, human connection, and personal growth.</p>
+                        <p>I believe in the power of both code and words to make a positive impact in the world. Whether I'm debugging a complex algorithm or developing a character arc, I approach each challenge with creativity and determination.</p>
+                        <div class="row mt-4">
+                            <div class="col-6">
+                                <h4>5+</h4>
+                                <p>Years Experience</p>
+                            </div>
+                            <div class="col-6">
+                                <h4>50+</h4>
+                                <p>Projects Completed</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="about-image fade-in text-center">
+                        <img src="pfp.jpg" alt="Cir" class="profile-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Technical Skills</h2>
+                <p>Technologies and tools I work with</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-html5"></i>
+                    </div>
+                    <h4>Frontend Development</h4>
+                    <div class="skill-details"><p>HTML5, CSS3, JavaScript, React, Vue.js, Bootstrap, Tailwind CSS</p></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h4>Backend Development</h4>
+                    <div class="skill-details"><p>Node.js, Python, PHP, Express.js, Django, Laravel, REST APIs</p></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h4>Database & Cloud</h4>
+                    <div class="skill-details"><p>MySQL, MongoDB, PostgreSQL, AWS, Google Cloud, Docker</p></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h4>Mobile Development</h4>
+                    <div class="skill-details"><p>React Native, Flutter, Unity, Progressive Web Apps</p></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h4>Tools & Version Control</h4>
+                    <div class="skill-details"><p>Git, GitHub, VS Code, Postman, Figma, Jira, Unity, Cursor</p></div>
+                </div>
+                <div class="skill-card fade-in">
+                    <div class="skill-icon">
+                        <i class="fas fa-pen-fancy"></i>
+                    </div>
+                    <h4>Writing & Content</h4>
+                    <div class="skill-details"><p>Technical Writing, Creative Writing, Content Strategy, SEO, AI</p></div>
+                </div>
+                <div class="skill-card fade-in crypto">
+                    <div class="skill-icon">
+                        <i class="fab fa-bitcoin"></i>
+                    </div>
+                    <h4>Crypto</h4>
+                    <div class="skill-details"><p>Chatbot for crypto to determine the orderbook, DEX and CEX liquidity using Python, Telegram for AI bot, and APIs</p></div>
+                </div>
+                <div class="skill-card fade-in game-dev">
+                    <div class="skill-icon">
+                        <i class="fas fa-gamepad"></i>
+                    </div>
+                    <h4>Game Development</h4>
+                    <div class="skill-details"><p>Using Unity for 2D and 3D game development</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Featured Projects</h2>
+                <p>Some of my recent coding projects</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-user-shield"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>MIA(Missing In Action)</h4>
+                            <p>A full-stack finding missing persons in profile and also can upload a missing person and will be confirmed by the police if its confirmed MIA.</p>
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Bootstrap</span>
+                                <span class="tag">Flask</span>
+                                <span class="tag">Xampp</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>SpeechyPOP</h4>
+                            <p>A 3d game for Kids that needs to login to play the game, in each round their is words that they need to pronounce correctly and their score will be stored in teachers website and see the leaderboard by each section</p>
+                            <div class="project-tags">
+                                <span class="tag">Unity</span>
+                                <span class="tag">Ngrok</span>
+                                <span class="tag">PHP</span>
+                                <span class="tag">SQL</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-bullhorn"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>12 Week Marketing Plan</h4>
+                            <p>A 12 Week marketing plan for the people to get job easily done needed to their websites and businesses.</p>
+                            <div class="project-tags">
+                                <span class="tag">GoHighLevel</span>
+                                <span class="tag">Automation</span>
+                                <span class="tag">Zapier</span>
+                                <span class="tag">Pabbly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Enhancing Elementary Education: Predicting Students' Preferred VARK Learning Style Using K-Nearest Neighbor Algorithm</h4>
+                            <p>It represents an innovative initiative that effectively harnesses the cutting-edge tools of data analytics and machine learning. Its ultimate aim is to cultivate an insightful comprehension of the learning capacities inherent in elementary school students and, in turn, tailor teaching approaches to cater to these abilities. Central to this endeavor is the quest to predict students' preferred learning styles, a pivotal element in customizing education and enhancing the learning experiences of elementary school students.
+                            </p>
+                            <div class="project-tags">
+                                <span class="tag">Python</span>
+                                <span class="tag">SQL</span>
+                                <span class="tag">Dart</span>
+                                <span class="tag">Fast API</span>
+                                <span class="tag">Flutter</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>AI Chatbot Telegram For Crypto</h4>
+                            <p>Intelligent chatbot for the telegram to determine the token's Order Book,Dex,Cex, and liquidity Calcuation.</p>
+                            <div class="project-tags">
+                                <span class="tag">Python Flask</span>
+                                <span class="tag">Ngrok</span>
+                                <span class="tag">Telegram</span>
+                                <span class="tag">Rest API's</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="project-card fade-in">
+                        <div class="project-image">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <div class="project-content">
+                            <h4>Low Code</h4>
+                            <p>Using low code for easy platform building, Like CRM, Automation, Webhooks and API</p>
+                            <div class="project-tags">
+                                <span class="tag">Make</span>
+                                <span class="tag">GoHighLevel</span>
+                                <span class="tag">Zapier</span>
+                                <span class="tag">Pabbly</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Books Section -->
+    <section id="books" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Published Books</h2>
+                <p>My journey as an author</p>
+            </div>
+            <div class="row align-items-start mb-5">
+                <div class="col-md-4 text-center">
+                    <img src="Cone Of Sacriligi.png" alt="Cone of Sacriligious" style="max-width: 100%; max-height: 400px; object-fit: contain; object-position: center; display: block; background: #660000; margin: 0 auto;">
+                </div>
+                <div class="col-md-8 d-flex flex-column justify-content-center">
+                    <h3 style="font-size:2rem; color:var(--accent-color); margin-bottom:1rem;">Cone of Sacriligious</h3>
+                    <div class="mb-2">
+                        <span class="badge bg-primary">Published</span>/<span class="badge" style="background-color: green;">Ongoing</span>
+                        <small class="text-muted ms-3">June 26,2025</small>
+                    </div>
+                    <div>
+                        <span class="badge bg-secondary">Mystery-Thriller</span>
+                        <span class="badge" style="background-color: red;">Evil</span>
+                        <span class="badge text-dark" style="background-color: yellow;">Comedy</span>
+                        <span class="badge bg-info text-dark">Fiction</span>
+                        <span class="badge bg-dark">Reincarnation</span>
+                    </div>
+                    <p style="font-size:1.1rem;">Cir, a 60-year-old retired cybersecurity expert and doctorate holder, was mysteriously killed in his home. However, he was reincarnated as a poor, orphaned boy in a remote village—still retaining all the memories of his past life. Soon, he is adopted by a prestigious family, setting him on a new path filled with trials and decisions. Guided by divine commands and his own choices, Cir must face a series of events that will test his knowledge, morals, and destiny.</p>
+                    <p>Link: <a href="https://www.wattpad.com/story/396739925-cone-of-sacrilegious" target="_blank" rel="noopener noreferrer">Cone of Sacriligious</a></p>
+                </div>
+            </div>       
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Get In Touch</h2>
+                <p>Let's work together on your next project</p>
+            </div>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <form class="fade-in">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" placeholder="Your Name" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <input type="email" class="form-control" placeholder="Your Email" required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Subject" required>
+                        </div>
+                        <div class="mb-3">
+                            <textarea class="form-control" rows="5" placeholder="Your Message" required></textarea>
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-custom btn-primary-custom">Send Message</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <h4>Cir</h4>
+            <p>Programmer & Author</p>
+            <div class="social-links">
+                <a href="https://github.com/Athr1tis"><i class="fab fa-github"></i></a>
+                <a href="https://www.facebook.com/cir24"><i class="fab fa-facebook"></i></a>
+                <a href="https://www.wattpad.com/user/__Cir_"><i class="fas fa-book"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-medium"></i></a>
+            </div>
+            <p class="mt-3">&copy; 2025 Cir. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script src="script.js"></script>
+</body>
+</html>
