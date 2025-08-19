@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css.css">
     <title>Portfolio</title>
+    
+    <!-- Firebase SDK - Load before main script -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 </head>
 <body>
   <div class="container">
@@ -261,9 +265,9 @@
 
 
   <script>
-    // Firebase configuration - Replace with your own config
+    // Firebase configuration
     const firebaseConfig = {
-      apiKey: "AIzaSyAsFWorYNG28_RCONsQJfe4U3Qf4Vt55Wg",
+      apiKey: "AIzaSyAsFWorYNG28_RCONsQJfe4U3Qf4Vt55W8",
       authDomain: "counting-f42b8.firebaseapp.com",
       projectId: "counting-f42b8",
       storageBucket: "counting-f42b8.firebasestorage.app",
@@ -271,32 +275,24 @@
       appId: "1:830587333188:web:aab3417d9427b3dcb26a11"
     };
     
-    // Initialize Firebase (uncomment when you have your config)
+    // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
     const db = firebase.firestore();
     
     // Click tracking functionality with Firebase
     async function trackLinkClick(linkId, linkUrl) {
       try {
-        // For now, use localStorage as fallback
-        let clickCount = localStorage.getItem(linkId) || 0;
-        clickCount = parseInt(clickCount) + 1;
-        localStorage.setItem(linkId, clickCount);
-        
-        // Update the display
-        updateClickCount(linkId, clickCount);
-        
-        // TODO: When Firebase is set up, uncomment this:
-        // const linkRef = db.collection('linkClicks').doc(linkId);
-        // await linkRef.set({
-        //   clicks: firebase.firestore.FieldValue.increment(1),
-        //   lastClicked: new Date()
-        // }, { merge: true });
+        // Update Firebase database
+        const linkRef = db.collection('linkClicks').doc(linkId);
+        await linkRef.set({
+          clicks: firebase.firestore.FieldValue.increment(1),
+          lastClicked: new Date()
+        }, { merge: true });
         
         // Open the link
         window.open(linkUrl, '_blank');
         
-        console.log(`Link clicked: ${linkId}, Total clicks: ${clickCount}`);
+        console.log(`Link clicked: ${linkId}`);
       } catch (error) {
         console.error('Error tracking click:', error);
         // Fallback: just open the link
@@ -311,10 +307,17 @@
       }
     }
     
-    // Function to load click counts from Firebase (when ready)
+    // Function to load click counts from Firebase
     async function loadClickCounts() {
       try {
-        // For now, load from localStorage
+        const snapshot = await db.collection('linkClicks').get();
+        snapshot.forEach(doc => {
+          const data = doc.data();
+          updateClickCount(doc.id, data.clicks || 0);
+        });
+      } catch (error) {
+        console.error('Error loading click counts:', error);
+        // Fallback to localStorage if Firebase fails
         const links = [
           { id: 'speechy-pop', url: 'https://drive.google.com/drive/folders/1D3xJdQ96QsQiiH36wZdvF9e5QC5BzyYF?usp=sharing' },
           { id: 'marketing-plan', url: 'https://drive.google.com/drive/folders/1_Xi03-SVyBrXI_ZLQHQ7ENy9NNZ9vF9o?usp=sharing' },
@@ -325,16 +328,6 @@
           const count = localStorage.getItem(link.id) || 0;
           updateClickCount(link.id, count);
         });
-        
-        // TODO: When Firebase is set up, uncomment this:
-        // const snapshot = await db.collection('linkClicks').get();
-        // snapshot.forEach(doc => {
-        //   const data = doc.data();
-        //   updateClickCount(doc.id, data.clicks || 0);
-        // });
-        
-      } catch (error) {
-        console.error('Error loading click counts:', error);
       }
     }
     
@@ -358,6 +351,4 @@
     window.addEventListener('load', loadClickCounts);
   </script>
 </body>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
 </html>
