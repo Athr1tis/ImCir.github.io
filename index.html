@@ -276,29 +276,57 @@
     }
 
     function trackClick(projectName) {
-      let count = localStorage.getItem(projectName);
-      if (count === null) {
-        count = 0;
-      } else {
-        count = parseInt(count);
-      }
-      count++;
-      localStorage.setItem(projectName, count);
-      const clickCountElement = document.getElementById(`${projectName}-count`);
-      if (clickCountElement) {
-        clickCountElement.textContent = count;
-      }
+      // Use CountAPI to track clicks globally
+      const countApiUrl = `https://api.countapi.xyz/hit/rica-portfolio/${projectName}`;
+      
+      // Increment the count in the database
+      fetch(countApiUrl)
+        .then(response => response.json())
+        .then(data => {
+          // Update the display with the new count
+          const clickCountElement = document.getElementById(`${projectName}-count`);
+          if (clickCountElement) {
+            clickCountElement.textContent = data.value;
+          }
+        })
+        .catch(error => {
+          console.error('Error tracking click:', error);
+          // Fallback: increment local count if API fails
+          let localCount = localStorage.getItem(projectName) || 0;
+          localCount = parseInt(localCount) + 1;
+          localStorage.setItem(projectName, localCount);
+          const clickCountElement = document.getElementById(`${projectName}-count`);
+          if (clickCountElement) {
+            clickCountElement.textContent = localCount;
+          }
+        });
     }
 
     // Load click counts when page loads
     function loadClickCounts() {
       const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
+      
       projects.forEach(project => {
-        const count = localStorage.getItem(project) || 0;
-        const clickCountElement = document.getElementById(`${project}-count`);
-        if (clickCountElement) {
-          clickCountElement.textContent = count;
-        }
+        // Get count from CountAPI
+        const countApiUrl = `https://api.countapi.xyz/get/rica-portfolio/${project}`;
+        
+        fetch(countApiUrl)
+          .then(response => response.json())
+          .then(data => {
+            const clickCountElement = document.getElementById(`${project}-count`);
+            if (clickCountElement) {
+              clickCountElement.textContent = data.value || 0;
+            }
+          })
+          .catch(error => {
+            console.error('Error loading count for', project, ':', error);
+            // Fallback: show local count if API fails
+            const localCount = localStorage.getItem(project) || 0;
+            const clickCountElement = document.getElementById(`${project}-count`);
+            if (clickCountElement) {
+              clickCountElement.textContent = localCount;
+            }
+          });
       });
     }
 
