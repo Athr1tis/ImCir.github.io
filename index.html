@@ -268,22 +268,25 @@
       'crypto-bot': 0
     };
 
-    // Load counts from hidden fields when page loads
+    // Load counts from HTML hidden fields when page loads
     function loadCountsFromHTML() {
       const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
       projects.forEach(project => {
+        // Get the initial count from the HTML hidden field
+        const storageElement = document.getElementById(`${project}-storage`);
+        if (storageElement) {
+          visitCounts[project] = parseInt(storageElement.value) || 0;
+        }
+        
+        // Update all display elements
         const countElement = document.getElementById(`${project}-count`);
         const displayElement = document.getElementById(`${project}-display`);
-        const storageElement = document.getElementById(`${project}-storage`);
         
         if (countElement) {
           countElement.textContent = visitCounts[project];
         }
         if (displayElement) {
           displayElement.textContent = visitCounts[project];
-        }
-        if (storageElement) {
-          storageElement.value = visitCounts[project];
         }
       });
     }
@@ -303,10 +306,10 @@
     }
 
     function trackClick(projectName) {
-      // Increment the count
+      // Increment ONLY the clicked project count
       visitCounts[projectName]++;
       
-      // Update the display
+      // Update the display for ONLY the clicked project
       const clickCountElement = document.getElementById(`${projectName}-count`);
       const displayElement = document.getElementById(`${projectName}-display`);
       const storageElement = document.getElementById(`${projectName}-storage`);
@@ -324,27 +327,37 @@
       // Store in localStorage as backup
       localStorage.setItem(projectName, visitCounts[projectName]);
       
-      // Try to update the visitcounts file via GitHub API (optional)
-      updateVisitCountsFile();
+      console.log(`${projectName} clicked! New count: ${visitCounts[projectName]}`);
     }
 
-    // Function to update the visitcounts file (optional enhancement)
-    function updateVisitCountsFile() {
-      // This would require GitHub API authentication
-      // For now, we'll just use localStorage and HTML storage
-      console.log('Visit counts updated:', visitCounts);
-    }
-
-    // Load counts from localStorage when page loads
+    // Load counts from HTML hidden fields when page loads
     function loadCountsFromStorage() {
+      // First load from HTML hidden fields (these are the source of truth)
+      loadCountsFromHTML();
+      
+      // Then check localStorage for any additional clicks since page load
       const projects = ['speechy-pop', 'marketing-plan', 'crypto-bot'];
       projects.forEach(project => {
         const storedCount = localStorage.getItem(project);
         if (storedCount !== null) {
-          visitCounts[project] = parseInt(storedCount);
+          const localCount = parseInt(storedCount);
+          const htmlCount = parseInt(document.getElementById(`${project}-storage`).value) || 0;
+          
+          // Use the higher count (HTML or localStorage)
+          visitCounts[project] = Math.max(localCount, htmlCount);
+          
+          // Update displays
+          const countElement = document.getElementById(`${project}-count`);
+          const displayElement = document.getElementById(`${project}-display`);
+          
+          if (countElement) {
+            countElement.textContent = visitCounts[project];
+          }
+          if (displayElement) {
+            displayElement.textContent = visitCounts[project];
+          }
         }
       });
-      loadCountsFromHTML();
     }
 
     // Initialize counts when page loads

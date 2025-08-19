@@ -4,9 +4,9 @@
 This portfolio now uses a hybrid storage system that stores visit counts directly in the HTML file and localStorage for persistence across browsers.
 
 ## Current Visit Counts
-- **speechy-pop**: 0 visits
-- **marketing-plan**: 0 visits  
-- **crypto-bot**: 0 visits
+- **speechy-pop**: 9 visits
+- **marketing-plan**: 4 visits  
+- **crypto-bot**: 34 visits
 
 ## How It Works
 
@@ -29,9 +29,9 @@ This portfolio now uses a hybrid storage system that stores visit counts directl
 
 ### Hidden Input Fields (in HTML)
 ```html
-<input type="hidden" id="speechy-pop-storage" value="0">
-<input type="hidden" id="marketing-plan-storage" value="0">
-<input type="hidden" id="crypto-bot-storage" value="0">
+<input type="hidden" id="speechy-pop-storage" value="9">
+<input type="hidden" id="marketing-plan-storage" value="4">
+<input type="hidden" id="crypto-bot-storage" value="34">
 ```
 
 ### Display Elements
